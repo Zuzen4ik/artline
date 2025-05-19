@@ -15,7 +15,7 @@ header {
 
 @media (max-width: 600px) {
   header {
-    transform: scale(0.5);
+    transform: scale(0.8);
   }
 }
 
