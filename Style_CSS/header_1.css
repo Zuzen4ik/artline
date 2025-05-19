@@ -1,0 +1,69 @@
+header {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between; /* Verteilt die Elemente horizontal */
+    align-items: center; /* Vertikal zentrieren */
+    background-color: #3f3f3f; /* Dunkleres Grau für den Header-Hintergrund */
+    padding: 15px 7%; /* Einheitliches Padding oben/unten und links/rechts */
+    box-shadow: 0 10px 10px #3f3f3f;
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    z-index: 4;
+}
+
+.articleImg {
+    width: 200px; /* Etwas kleiner für ein moderneres Gefühl */
+    margin-top: -15px;
+    margin-bottom: -22px;
+}
+
+.head-center {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Zentriert den Text und die Buttons vertikal */
+    gap: 10px; /* Abstand zwischen Text und Buttons */
+    flex-grow: 1; /* Nimmt den verfügbaren Platz ein */
+    margin-left: 20px; /* Abstand zum Logo */
+}
+
+.center-text {
+    font-size: 1.5em; /* Größere Schrift für eine bessere Hervorhebung */
+    color: #f4f4f4; /* Hellgrau für den Text */
+    text-align: center;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtilerer Schatten */
+}
+
+.headerButtonBlock {
+    display: flex;
+    flex-direction: row;
+    gap: 10px; /* Abstand zwischen den Buttons */
+}
+
+.headerButon {
+    height: 30px;
+    width: 100px;
+    padding: 10px 20px; /* Mehr horizontale Polsterung */
+    font-size: 1em;
+    text-align: center;
+    color: #f4f4f4; /* Helles Grau für die Schrift */
+    background-color: transparent; /* Transparenter Hintergrund */
+    border-radius: 25px;/* Hellere graue Umrandung */
+    cursor: pointer; /* Zeiger-Cursor beim Überfahren */
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Sanfte Übergänge */
+}
+
+.headerButon:hover {
+    background-color: #4CAF50; /* Grün beim Überfahren */
+    color: #fff;
+    border-color: #4CAF50;
+    border-radius: 24px;
+    box-shadow: 0 0px 12px #4CAF50; /* Subtiler Schatten beim Hover */
+}
+
+.headerButon:active {
+    background-color: #388E3C; /* Dunkleres Grün beim Klicken */
+    color: #fff;
+    border-color: #388E3C;
+}
