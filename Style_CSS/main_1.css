@@ -13,12 +13,6 @@ body {
     -moz-osx-font-smoothing: grayscale; 
 }
 
-@media (max-width: 600px) {
-  body {
-    transform: scale(0.8);
-  }
-}
-
 main {
     padding: 40px;
     margin: 40px auto;

@@ -4,19 +4,13 @@ header {
     justify-content: space-between; 
     align-items: center; 
     background-color: #3f3f3f; 
-    padding: 15px 7%; 
+    padding: 10px 5%; 
     box-shadow: 0 10px 10px #3f3f3f;
     position: fixed;
     left: 0;
     right: 0;
     top: 0;
     z-index: 4;
-}
-
-@media (max-width: 600px) {
-  header {
-    transform: scale(0.8);
-  }
 }
 
 .articleImg {
@@ -32,13 +26,6 @@ header {
     gap: 10px; 
     flex-grow: 1; 
     margin-left: 20px; 
-}
-
-.center-text {
-    font-size: 1.5em; 
-    color: #f4f4f4; 
-    text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
 }
 
 .headerButtonBlock {
@@ -58,6 +45,7 @@ header {
     border-radius: 25px;
     cursor: pointer; 
     transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
+    white-space: nowrap;
 }
 
 .headerButon:hover {
@@ -72,4 +60,26 @@ header {
     background-color: #388E3C; /* Dunkleres Grün beim Klicken */
     color: #fff;
     border-color: #388E3C;
+}
+
+/* Media query for smaller screens (e.g., phones) */
+@media (max-width: 600px) {
+    .head-center {
+        margin-left: 5px; 
+    }
+
+    .headerButtonBlock {
+        gap: 2px;
+    }
+
+    .headerButon {
+        padding: 6px 8px;
+        font-size: 0.8em; 
+    }
+    
+    .headerButtonBlock {
+        /* Example: Stack buttons vertically */
+        flex-direction: column;
+        align-items: flex-end; 
+    }
 }
