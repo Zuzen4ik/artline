@@ -13,6 +13,12 @@ body {
     -moz-osx-font-smoothing: grayscale; 
 }
 
+@media (max-width: 600px) {
+  body {
+    transform: scale(0.5);
+  }
+}
+
 main {
     padding: 40px;
     margin: 40px auto;
@@ -212,7 +218,7 @@ a:hover {
 }
 
 /* Further reduce scale on very small screens */
-@media (max-width: 400px) {
+@media (max-width: 500px) {
     .photoImg.zoomed {
         transform: translate(-50%, -50%) scale(2);
     }

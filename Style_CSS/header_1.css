@@ -1,10 +1,10 @@
 header {
     display: flex;
     flex-direction: row;
-    justify-content: space-between; /* Verteilt die Elemente horizontal */
-    align-items: center; /* Vertikal zentrieren */
-    background-color: #3f3f3f; /* Dunkleres Grau für den Header-Hintergrund */
-    padding: 15px 7%; /* Einheitliches Padding oben/unten und links/rechts */
+    justify-content: space-between; 
+    align-items: center; 
+    background-color: #3f3f3f; 
+    padding: 15px 7%; 
     box-shadow: 0 10px 10px #3f3f3f;
     position: fixed;
     left: 0;
@@ -13,8 +13,14 @@ header {
     z-index: 4;
 }
 
+@media (max-width: 600px) {
+  header {
+    transform: scale(0.5);
+  }
+}
+
 .articleImg {
-    width: 200px; /* Etwas kleiner für ein moderneres Gefühl */
+    width: 200px; 
     margin-top: -15px;
     margin-bottom: -22px;
 }
@@ -22,36 +28,36 @@ header {
 .head-center {
     display: flex;
     flex-direction: column;
-    align-items: center; /* Zentriert den Text und die Buttons vertikal */
-    gap: 10px; /* Abstand zwischen Text und Buttons */
-    flex-grow: 1; /* Nimmt den verfügbaren Platz ein */
-    margin-left: 20px; /* Abstand zum Logo */
+    align-items: center; 
+    gap: 10px; 
+    flex-grow: 1; 
+    margin-left: 20px; 
 }
 
 .center-text {
-    font-size: 1.5em; /* Größere Schrift für eine bessere Hervorhebung */
-    color: #f4f4f4; /* Hellgrau für den Text */
+    font-size: 1.5em; 
+    color: #f4f4f4; 
     text-align: center;
-    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); /* Subtilerer Schatten */
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3); 
 }
 
 .headerButtonBlock {
     display: flex;
     flex-direction: row;
-    gap: 10px; /* Abstand zwischen den Buttons */
+    gap: 10px; 
 }
 
 .headerButon {
     height: 30px;
     width: 100px;
-    padding: 10px 20px; /* Mehr horizontale Polsterung */
+    padding: 10px 20px; 
     font-size: 1em;
     text-align: center;
-    color: #f4f4f4; /* Helles Grau für die Schrift */
-    background-color: transparent; /* Transparenter Hintergrund */
-    border-radius: 25px;/* Hellere graue Umrandung */
-    cursor: pointer; /* Zeiger-Cursor beim Überfahren */
-    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; /* Sanfte Übergänge */
+    color: #f4f4f4; 
+    background-color: transparent; 
+    border-radius: 25px;
+    cursor: pointer; 
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease; 
 }
 
 .headerButon:hover {
