@@ -3,124 +3,75 @@ body {
     padding: 0;
     padding-top: 150px;
     background-color: #555;
-    background-image: linear-gradient(rgba(85, 85, 85, 0.3), rgba(51, 51, 51, 0.5)), url("brick_wall.png"); /* Angepasster Verlauf */
+    background-image: linear-gradient(rgba(85, 85, 85, 0.3), rgba(51, 51, 51, 0.5)), url("brick_wall.png"); 
     background-repeat: repeat;
     background-size: 150px;
-    color: #f4f4f4; /* Dunkelgrau für gut lesbaren Text */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Modernere Schriftart */
-    line-height: 1.6; /* Bessere Lesbarkeit */
-    -webkit-font-smoothing: antialiased; /* Glattere Schrift auf Webkit-Browsern */
-    -moz-osx-font-smoothing: grayscale; /* Glattere Schrift auf Firefox */
+    color: #f4f4f4; 
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6; 
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
 }
 
 main {
     padding: 40px;
     margin: 40px auto;
     margin-bottom: 100px;
-    max-width: 960px;
-    min-width: 750px;
-    background-color: rgba(51, 51, 51, 0.7); /* Leicht transparente, dunklere Farbe */
+    max-width: 75%;
+    min-width: auto;
+    background-color: rgba(51, 51, 51, 0.7); 
     border-radius: 8px;
     box-shadow: 0 0 25px rgb(34, 34, 34);
 
 }
 
 a {
-    color: #4CAF50; /* Grün als Akzentfarbe für Links */
-    text-decoration: none; /* Entfernt die standardmäßige Unterstreichung */
-    transition: color 0.3s ease; /* Sanfte Farbänderung bei Hover */
+    color: #4CAF50; 
+    text-decoration: none; 
+    transition: color 0.3s ease; 
 }
 
 a:hover {
-    color: #388E3C; /* Dunkleres Grün bei Hover */
+    color: #388E3C; 
 }
 
 .info-block {
-    background-color: #3f3f3f; /* Hellgrauer Hintergrund für Info-Blöcke */
-    padding: 25px; /* Einheitliches Padding */
+    background-color: #3f3f3f; 
+    padding: 25px; 
     margin-bottom: 20px;
-    border-radius: 6px; /* Sanfte abgerundete Ecken */
-    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); /* Subtiler Schatten */
-    border-left: 5px solid #4CAF50; /* Grüner Akzentbalken links */
+    border-radius: 6px; 
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); 
+    border-left: 5px solid #4CAF50; 
     transition: box-shadow 0.25s ease-in-out;
     opacity: 0.9;
 }
 
 .info-block:hover{
-    box-shadow: 0 0px 6px #4caf4f93; /* Subtiler Schatten */
+    box-shadow: 0 0px 6px #4caf4f93; 
 
 }
 
 .info-block-name {
-    color: #4CAF50; /* Grün für die Überschrift */
-    font-size: 1.2em; /* Etwas größere Schrift */
+    color: #4CAF50; 
+    font-size: 1.2em; 
     margin-bottom: 10px;
-    font-weight: bold; /* Hervorhebung */
+    font-weight: bold; 
 }
 
 .info-block-inhalt {
     display: block;
-    list-style: none; /* Entfernt die Standard-Listenpunkte */
+    list-style: none;
     padding-left: 20px;
 }
 
 .info-block-inhalt li::before {
-    content: "\2022"; /* Bullet-Point-Ersatz */
-    color: #4CAF50; /* Grüne Farbe für die Punkte */
+    content: "\2022"; 
+    color: #4CAF50; 
     display: inline-block;
     width: 1em;
     margin-left: -1em;
 }
 
-
-
-.garantie-block {
-    width: 120px;
-    height: 120px;
-    background: linear-gradient(to right, #c0c0c0 0%, #a8a8a8 20%, #909090 40%, #a8a8a8 60%, #c0c0c0 80%, #d8d8d8 100%);
-    border: 5px double rgb(58, 58, 58);
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 10px;
-    color: #222; /* Sehr dunkler Text für guten Kontrast */
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    font-size: 16px;
-    font-weight: bold;
-    text-align: center;
-    text-shadow: 1px 1px 1px rgba(0, 0, 0, 0.5); /* Deutlicherer Textschatten für Prägung */
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3), /* Subtiler allgemeiner Schatten */
-                inset 1px 1px 3px rgba(255, 255, 255, 0.2), /* Innerer Glanz oben-links */
-                inset -1px -1px 3px rgba(0, 0, 0, 0.4); /* Innerer Schatten unten-rechts für Tiefe */
-    transform: rotate(7deg);
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-    z-index: 2; /* Beibehalten, falls benötigt */
-    position: absolute; /* Beibehalten, falls benötigt */
-    top: 170px; /* Beibehalten, falls benötigt */
-    right: calc(50% - 400px); /* Beibehalten, falls benötigt */
-}
-
-.garantie-block p {
-    color: #222; /* Sicherstellen, dass der Text auch hier dunkel ist */
-    margin: 0; /* Standardmäßige Margins von <p> entfernen, falls nötig */
-    opacity: 0.85;
-}
-
-.garantie-block:hover {
-    transform: rotate(7deg) scale(1.02); /* Leichte Bewegung beim Hover */
-    box-shadow: 3px 3px 15px rgba(0, 0, 0, 0.4),
-                inset 1px 1px 3px rgba(255, 255, 255, 0.3),
-                inset -1px -1px 3px rgba(0, 0, 0, 0.5);
-}
-
-.garantie-block:active {
-    transform: rotate(3deg) scale(0.98); /* Leichte Reaktion beim Klicken */
-    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.3),
-                inset 1px 1px 2px rgba(255, 255, 255, 0.1),
-                inset -1px -1px 2px rgba(0, 0, 0, 0.3);
-}
 
 /* Style für Tabellen mit 3 Spalten */
 .price-table:not(.two-columns) th:nth-child(1),
@@ -146,48 +97,71 @@ a:hover {
     width: 25%;
 }
 
-.table-container {
-    overflow-x: auto; /* Für den Fall, dass die Tabelle zu breit wird */
-}
-
-.table-container-2 {
-    overflow-x: auto; /* Für den Fall, dass die Tabelle zu breit wird */
+.table-container , .table-container-2{
+    overflow-x: auto; 
+    margin-bottom: 20px;
 }
 
 .price-table {
     width: 100%;
-    border-collapse: collapse; /* Kein Abstand zwischen den Zellen */
+    border-collapse: collapse; 
     margin-top: 15px;
-    background-color: #444; /* Dunklerer Hintergrund für die Tabelle */
-    color: #f4f4f4; /* Helle Schriftfarbe */
+    background-color: #444; 
+    color: #f4f4f4; 
     border-radius: 4px;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+    font-size: 0.9em;
 }
 
 .price-table th, .price-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #555; /* Dunklere Trennlinien */
+    border-bottom: 1px solid #555;
+    white-space: nowrap; 
 }
 
 .price-table th {
-    background-color: #333; /* Noch dunklerer Hintergrund für die Kopfzeile */
+    background-color: #333;
     font-weight: bold;
 }
 
 .price-table tbody tr:nth-child(even) {
-    background-color: #4a4a4a; /* Etwas hellerer Hintergrund für gerade Zeilen */
+    background-color: #4a4a4a;
 }
 
 .price-table tbody tr:hover {
-    background-color: #555; /* Noch etwas heller beim Überfahren mit der Maus */
+    background-color: #555; 
+}
+
+@media (max-width: 600px) {
+    .price-table:not(.two-columns) th:nth-child(1),
+    .price-table:not(.two-columns) td:nth-child(1) {
+        width: 40%;
+    }
+
+    .price-table:not(.two-columns) th:nth-child(2),
+    .price-table:not(.two-columns) td:nth-child(2),
+    .price-table:not(.two-columns) th:nth-child(3),
+    .price-table:not(.two-columns) td:nth-child(3) {
+        width: 30%;
+    }
+
+    .price-table.two-columns th:nth-child(1),
+    .price-table.two-columns td:nth-child(1) {
+        width: 60%;
+    }
+
+    .price-table.two-columns th:nth-child(2),
+    .price-table.two-columns td:nth-child(2) {
+        width: 40%;
+    }
 }
 
 .secundary-text {
     display: flex;
-    color: #4CAF50; /* Grün beibehalten */
+    color: #4CAF50; 
     justify-content: center;
-    font-weight: bold; /* Hervorhebung */
+    font-weight: bold; 
 }
 
 .photo-block{
@@ -195,18 +169,18 @@ a:hover {
     flex-wrap: wrap;
     gap: 30px;
     justify-content: center;
-    background-color: #3f3f3f; /* Hellgrauer Hintergrund für Info-Blöcke */
-    padding: 40px; /* Einheitliches Padding */
+    background-color: #3f3f3f; 
+    padding: 40px; 
     margin-bottom: 20px;
-    border-radius: 6px; /* Sanfte abgerundete Ecken */
-    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); /* Subtiler Schatten */
-    border-left: 5px solid #4CAF50; /* Grüner Akzentbalken links */
+    border-radius: 6px; 
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); 
+    border-left: 5px solid #4CAF50; 
     transition: box-shadow 0.25s ease-in-out;
     opacity: 0.9;
 }
 
 .photo-block:hover{
-    box-shadow: 0 0px 6px #4caf4f93; /* Subtiler Schatten */
+    box-shadow: 0 0px 6px #4caf4f93; 
 
 }
 
@@ -215,11 +189,11 @@ a:hover {
     height: 240px;
     cursor: pointer;
     transition: transform 0.3s ease-in-out;
-    object-fit: cover; /* Prevent blur by maintaining aspect ratio and cropping */
+    object-fit: cover; 
 }
 
 .photoImg:hover {
-    transform: scale(1.03); /* Optional: slight zoom on hover */
+    transform: scale(1.03); 
 }
 
 .photoImg.zoomed {
@@ -227,14 +201,21 @@ a:hover {
     top: 53%;
     left: 50%;
     transform: translate(-50%, -50%) scale(3);
-    max-width: 90%; /* Adjusted for better viewing on larger screens */
-    max-height: 90%; /* Adjusted for better viewing on larger screens */
+    max-width: 95%; 
+    max-height: 90%; 
     box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
     background-color: white;
     padding: 10px;
-    object-fit: contain; /* Ensure the whole image is visible */
+    object-fit: contain; 
     image-rendering: optimizeQuality;
     z-index: 1000;
+}
+
+/* Further reduce scale on very small screens */
+@media (max-width: 400px) {
+    .photoImg.zoomed {
+        transform: translate(-50%, -50%) scale(2);
+    }
 }
 
 .zoom-navigation {
@@ -242,9 +223,11 @@ a:hover {
     display: flex;
     justify-content: space-between;
     top: 50%;
-    min-width: 950px;
-    left: calc(50%);
-    transform: translateX(-50%);
+    left: 0;
+    right: 0;
+    min-width: auto;
+    transform: translateY(-50%);
+    padding: 0 10px;
     z-index: 1001;
 }
 
@@ -259,6 +242,13 @@ a:hover {
     border-radius: 5px;
     opacity: 0; /* Initially hidden */
     transition: opacity 0.3s ease-in-out;
+}
+
+/* Hide navigation buttons on very small screens */
+@media (max-width: 500px) {
+    .zoom-navigation button {
+        display: none;
+    }
 }
 
 .zoom-navigation button.disabled-button {
