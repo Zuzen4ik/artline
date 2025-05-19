@@ -47,12 +47,23 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+    main{
+        max-width: 100%;
+    }
     .info-block-name{
         font-size: 1em;
     }
 
     .info-block-inhalt{
         font-size: 0.8;
+    }
+
+    .zoom-navigation button {
+        display: none;
+    }
+
+    .photoImg.zoomed {
+        transform: translate(-50%, -50%) scale(2);
     }
     
 }
@@ -222,13 +233,6 @@ a:hover {
     z-index: 1000;
 }
 
-/* Further reduce scale on very small screens */
-@media (max-width: 500px) {
-    .photoImg.zoomed {
-        transform: translate(-50%, -50%) scale(2);
-    }
-}
-
 .zoom-navigation {
     position: fixed;
     display: flex;
@@ -253,13 +257,6 @@ a:hover {
     border-radius: 5px;
     opacity: 0; /* Initially hidden */
     transition: opacity 0.3s ease-in-out;
-}
-
-/* Hide navigation buttons on very small screens */
-@media (max-width: 500px) {
-    .zoom-navigation button {
-        display: none;
-    }
 }
 
 .zoom-navigation button.disabled-button {
