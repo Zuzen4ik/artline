@@ -76,6 +76,7 @@ header {
         width: 80px;
         height: 25px;
         padding: 4px 8px;
+        padding-bottom: 2px;
         font-size: 0.8em; 
         text-align: center;
     }
