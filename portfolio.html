@@ -46,6 +46,10 @@
             const zoomNavigation = document.querySelector('.zoom-navigation');
             let photoImages = [];
             let currentlyZoomedIndex = -1;
+            // Variables for swipe functionality
+            let touchStartX = 0;
+            let touchEndX = 0;
+            const minSwipeDistance = 50;
 
             function loadImages() {
                 
@@ -99,6 +103,26 @@
                 zoomOverlay.style.opacity = currentlyZoomedIndex !== -1 ? '1' : '0';
             }
 
+            function showNextPhoto() {
+                if (currentlyZoomedIndex < photoImages.length - 1) {
+                    photoImages[currentlyZoomedIndex].classList.remove('zoomed');
+                    currentlyZoomedIndex++;
+                    photoImages[currentlyZoomedIndex].classList.add('zoomed');
+                    updateNavigationButtons();
+                    updateOverlayVisibility();
+                }
+            }
+
+            function showPrevPhoto() {
+                if (currentlyZoomedIndex > 0) {
+                    photoImages[currentlyZoomedIndex].classList.remove('zoomed');
+                    currentlyZoomedIndex--;
+                    photoImages[currentlyZoomedIndex].classList.add('zoomed');
+                    updateNavigationButtons();
+                    updateOverlayVisibility();
+                }
+            }
+
             function attachEventListeners() {
                 photoImages.forEach((img, index) => {
                     img.addEventListener('click', function() {
@@ -126,43 +150,47 @@
                         updateNavigationButtons();
                         updateOverlayVisibility();
                     } else if (currentlyZoomedIndex !== -1) {
-                        if (event.key === 'ArrowLeft' && currentlyZoomedIndex > 0) {
-                            photoImages[currentlyZoomedIndex].classList.remove('zoomed');
-                            currentlyZoomedIndex--;
-                            photoImages[currentlyZoomedIndex].classList.add('zoomed');
-                            updateNavigationButtons();
-                            updateOverlayVisibility();
-                        } else if (event.key === 'ArrowRight' && currentlyZoomedIndex < photoImages.length - 1) {
-                            photoImages[currentlyZoomedIndex].classList.remove('zoomed');
-                            currentlyZoomedIndex++;
-                            photoImages[currentlyZoomedIndex].classList.add('zoomed');
-                            updateNavigationButtons();
-                            updateOverlayVisibility();
+                        if (event.key === 'ArrowLeft') {
+                            showPrevPhoto
+                        } else if (event.key === 'ArrowRight') {
+                            showNextPhoto
                         }
                     }
                 });
 
                 if (prevButton && nextButton) {
-                    prevButton.addEventListener('click', function() {
-                        if (currentlyZoomedIndex > 0) {
-                            photoImages[currentlyZoomedIndex].classList.remove('zoomed');
-                            currentlyZoomedIndex--;
-                            photoImages[currentlyZoomedIndex].classList.add('zoomed');
-                            updateNavigationButtons();
-                            updateOverlayVisibility();
-                        }
-                    });
-
-                    nextButton.addEventListener('click', function() {
-                        if (currentlyZoomedIndex < photoImages.length - 1) {
-                            photoImages[currentlyZoomedIndex].classList.remove('zoomed');
-                            currentlyZoomedIndex++;
-                            photoImages[currentlyZoomedIndex].classList.add('zoomed');
-                            updateNavigationButtons();
-                            updateOverlayVisibility();
-                        }
-                    });
+                    prevButton.addEventListener('click', showPrevPhoto);
+                    nextButton.addEventListener('click', showNextPhoto);
+                        
                 }
+
+                // Add Touch Event Listeners for swipe
+                zoomOverlay.addEventListener('touchstart', function(event) {
+                    if (currentlyZoomedIndex !== -1) {
+                        touchStartX = event.touches[0].clientX;
+                    }
+                });
+
+                zoomOverlay.addEventListener('touchmove', function(event) {
+                    if (currentlyZoomedIndex !== -1) {
+                        touchEndX = event.touches[0].clientX;
+                    }
+                });
+
+                zoomOverlay.addEventListener('touchend', function() {
+                    if (currentlyZoomedIndex !== -1) {
+                        const swipeDistance = touchEndX - touchStartX;
+
+                        if (swipeDistance > minSwipeDistance) { // Swipe right
+                            showPrevPhoto();
+                        } else if (swipeDistance < -minSwipeDistance) { // Swipe left
+                            showNextPhoto();
+                        }
+                        // Reset touch positions
+                        touchStartX = 0;
+                        touchEndX = 0;
+                    }
+                });
             }
 
             loadImages();
