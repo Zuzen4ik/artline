@@ -138,6 +138,7 @@ a:hover {
 .price-table th, .price-table td {
     padding: 12px 15px;
     text-align: left;
+    z-index: 1;
 }
 
 .price-table th {
@@ -153,15 +154,45 @@ a:hover {
     background-color: #555; 
 }
 
+#wandanstrich, #laminat-verlegen, #spachtelarbeiten, #tapezieren, #vinyl-verlegen, #trockenbau-wande, #trockenbau-decken {
+    scroll-margin-top: 50vh;
+}
+
 @media (max-width: 600px) {
      .price-table, .price-table tbody, .price-table tr, .price-table td {
         display: block; 
         width: 100%;
     }
 
+    
     .price-table thead {
-        display: none; 
+        display: none;
     }
+
+    
+    .price-table:first-of-type thead {
+        display: block;
+        background-color: #333;
+        font-weight: bold;
+        padding: 12px 15px;
+        text-align: center;
+    }
+
+    
+    .price-table:first-of-type thead th {
+        display: none;
+    }
+
+    /* 4. Show ONLY the first th element within the first thead */
+    .price-table:first-of-type thead th:first-of-type {
+        display: block;
+        text-align: center;
+        font-size: 1em;
+        padding: 0;
+        border-bottom: none;
+    }
+
+    
 
     .price-table tr {
         margin-bottom: 15px; 
@@ -267,8 +298,8 @@ a:hover {
     }
 
     .photoImg{
-        width: 180px;
-        height: 180px;
+        width: 150px;
+        height: 150px;
     }
 }
 
