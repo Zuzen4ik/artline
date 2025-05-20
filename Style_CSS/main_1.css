@@ -138,8 +138,6 @@ a:hover {
 .price-table th, .price-table td {
     padding: 12px 15px;
     text-align: left;
-    border-bottom: 1px solid #555;
-    white-space: nowrap; 
 }
 
 .price-table th {
@@ -156,26 +154,70 @@ a:hover {
 }
 
 @media (max-width: 600px) {
+     .price-table, .price-table tbody, .price-table tr, .price-table td {
+        display: block; 
+        width: 100%;
+    }
+
+    .price-table thead {
+        display: none; 
+    }
+
+    .price-table tr {
+        margin-bottom: 15px; 
+        border: 0px solid #555;
+        border-radius: 4px;
+        padding: 0;
+    }
+
+    .price-table td {
+        text-align: center; 
+        padding: 12px 15px;
+        position: relative;
+        border: none; 
+        border-bottom: 1px solid #555; 
+        padding: 0;
+    }
+
+    .price-table td:last-child {
+        border-bottom: none; 
+    }
+
+    .price-table td::before {
+        content: attr(data-label); 
+        position: absolute;
+        left: 15px; 
+        width: calc(50% - 30px); 
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis; 
+        font-weight: bold;
+        color: #4CAF50; 
+        text-align: left;
+    }
+
+    /* Style für Tabellen mit 3 Spalten */
     .price-table:not(.two-columns) th:nth-child(1),
     .price-table:not(.two-columns) td:nth-child(1) {
-        width: 40%;
+        width: 100%;
     }
 
     .price-table:not(.two-columns) th:nth-child(2),
     .price-table:not(.two-columns) td:nth-child(2),
     .price-table:not(.two-columns) th:nth-child(3),
     .price-table:not(.two-columns) td:nth-child(3) {
-        width: 30%;
+        width: 100%;
     }
 
+    /* Style für Tabellen mit 2 Spalten */
     .price-table.two-columns th:nth-child(1),
     .price-table.two-columns td:nth-child(1) {
-        width: 60%;
+        width: 100%;
     }
 
     .price-table.two-columns th:nth-child(2),
     .price-table.two-columns td:nth-child(2) {
-        width: 40%;
+        width: 100%;
     }
 }
 
@@ -216,6 +258,18 @@ a:hover {
 
 .photoImg:hover {
     transform: scale(1.03); 
+}
+
+@media (max-width: 600px) {
+    .photo-block{
+        gap: 7px;
+        padding: 20px;
+    }
+
+    .photoImg{
+        width: 180px;
+        height: 180px;
+    }
 }
 
 .photoImg.zoomed {
