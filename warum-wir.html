@@ -26,10 +26,17 @@
         </div>        
     </header>
 
-    <main>
-      <article  class="info-block">
-            <h2 class="info-block-name">Warum Artline Renovierung?</h2>
-            <ul class="info-block-inhalt">
+    <main id="main-lang-content">
+        <div class="lang-button-block">
+                <button class="lang-button" data-lang="deutsch"><img src="src\de.png" alt="German flag" class="lang-img"></button>
+                <button class="lang-button" data-lang="ukranian"><img src="src\ua.png" alt="Ukrainian flag" class="lang-img"></button>
+                <button class="lang-button" data-lang="portugal"><img src="src\pt.png" alt="Portuguese flag" class="lang-img"></button>
+                <button class="lang-button" data-lang="russian"><img src="src\ru.png" alt="Russian flag" class="lang-img"></button>
+        </div>
+
+      <article  class="lang-info-block" id="deutsch">
+            <h2 class="lang-info-block-name">Warum Artline Renovierung?</h2>
+            <ul class="lang-info-block-inhalt">
                 <li>Qualität und Zuverlässigkeit: Unsere Arbeiten entsprechen höchsten Standards. Wir verwenden nur geprüfte Materialien und moderne Techniken.</li>
                 <li>Offizielle Firma mit Garantie: Als offiziell registriertes Unternehmen bieten wir Ihnen eine gesetzliche Mindestgarantie von 2 Jahren auf unsere Renovierungsarbeiten – vom Laminat- und Vinylboden bis zur Wand- und Deckenverkleidung.</li>
                 <li>Transparente Preise und faire Abrechnung: Keine versteckten Kosten. Alle Leistungen werden klar und nachvollziehbar abgerechnet.</li>
@@ -38,9 +45,9 @@
             </ul> <br>
             <p>Vertrauen Sie auf Artline Renovierung – Ihr Partner für langlebige, hochwertige und rechtssichere Renovierungen.</p>
         </article >
-        <article  class="info-block">
-            <h2 class="info-block-name">Чому Artline Renovierung?</h2>
-            <ul class="info-block-inhalt">
+        <article  class="lang-info-block" id="ukranian">
+            <h2 class="lang-info-block-name">Чому Artline Renovierung?</h2>
+            <ul class="lang-info-block-inhalt">
                 <li>Якість та надійність: Наші роботи відповідають найвищим стандартам. Ми використовуємо лише перевірені матеріали та сучасні технології.</li>
                 <li>Офіційна компанія з гарантією: Як офіційно зареєстрована компанія, ми надаємо вам законну мінімальну гарантію 2 роки на всі наші ремонтні роботи — від укладання ламінату та вінілу до облицювання стін і стель.</li>
                 <li>Прозорі ціни та чесний розрахунок: Ніяких прихованих витрат. Усі послуги розраховуються чітко та прозоро.</li>
@@ -49,9 +56,9 @@
             </ul> <br>
             <p>Довіртеся Artline Renovierung — вашому партнеру для довговічного, якісного та юридично безпечного ремонту.</p>
         </article >
-        <article  class="info-block">
-            <h2 class="info-block-name">Por que a Artline Renovierung?</h2>
-            <ul class="info-block-inhalt">
+        <article  class="lang-info-block" id="portugal">
+            <h2 class="lang-info-block-name">Por que a Artline Renovierung?</h2>
+            <ul class="lang-info-block-inhalt">
                 <li>Qualidade e confiabilidade: Nossos trabalhos seguem os mais altos padrões. Usamos apenas materiais testados e técnicas modernas.</li>
                 <li>Empresa oficial com garantia: Como uma empresa registrada oficialmente, oferecemos uma garantia legal mínima de 2 anos em todos os nossos serviços de renovação — desde a instalação de laminado e vinil até o revestimento de paredes e tetos.</li>
                 <li>Preços transparentes e cobrança justa: Sem custos ocultos. Todos os serviços são cobrados de forma clara e compreensível.</li>
@@ -60,9 +67,9 @@
             </ul> <br>
             <p>Confie na Artline Renovierung — seu parceiro para reformas duráveis, de alta qualidade e legalmente seguras.</p>
         </article >  
-        <article  class="info-block">
-            <h2 class="info-block-name">Почему Artline Renovierung?</h2>
-            <ul class="info-block-inhalt">
+        <article  class="lang-info-block" id="russian">
+            <h2 class="lang-info-block-name">Почему Artline Renovierung?</h2>
+            <ul class="lang-info-block-inhalt">
                 <li>Качество и надежность: Наши работы соответствуют самым высоким стандартам. Мы используем только проверенные материалы и современные технологии.</li>
                 <li>Официальная компания с гарантией: Как официально зарегистрированная фирма, мы предоставляем вам законную минимальную гарантию 2 года на все наши ремонтные работы — от укладки ламината и винила до облицовки стен и потолков.</li>
                 <li>Прозрачные цены и честный расчет: Никаких скрытых затрат. Все услуги рассчитываются ясно и прозрачно.</li>
@@ -77,5 +84,49 @@
         &copy; 2025 All rights reserved
     </footer>
     
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    const langButtons = document.querySelectorAll('.lang-button');
+    const infoBlocks = document.querySelectorAll('.lang-info-block');
+
+    function hideAllInfoBlocks() {
+        infoBlocks.forEach(block => {
+            block.classList.remove('active');
+        });
+    }
+
+    function setActiveButton(activeButton) {
+        langButtons.forEach(button => {
+            button.classList.remove('active'); 
+        });
+        if (activeButton) {
+            activeButton.classList.add('active'); 
+        }
+    }
+
+    function showInfoBlock(langId, clickedButton = null) { 
+        hideAllInfoBlocks();
+        const targetBlock = document.getElementById(langId);
+        if (targetBlock) {
+            targetBlock.classList.add('active');
+        }
+        if (clickedButton) {
+            setActiveButton(clickedButton);
+        } else {
+            const defaultButton = document.querySelector(`.lang-button[data-lang="${langId}"]`);
+            setActiveButton(defaultButton);
+        }
+    }
+
+    langButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const lang = this.dataset.lang; 
+            showInfoBlock(lang);
+        });
+    });
+    
+    showInfoBlock('deutsch');
+});
+    </script>
 </body>
 </html>

@@ -1,11 +1,17 @@
-body {
+html, body{
+    height: 100%;
     margin: 0;
     padding: 0;
-    padding-top: 150px;
-    background-color: #555;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
     background-image: linear-gradient(rgba(85, 85, 85, 0.3), rgba(51, 51, 51, 0.5)), url("brick_wall.png"); 
     background-repeat: repeat;
     background-size: 150px;
+    background-attachment: fixed;
     color: #f4f4f4; 
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6; 
@@ -14,9 +20,10 @@ body {
 }
 
 main {
+    flex-grow: 1;
     padding: 40px;
     margin: 40px auto;
-    margin-bottom: 100px;
+    margin-top: 150px;
     max-width: 75%;
     min-width: auto;
     background-color: rgba(51, 51, 51, 0.7); 
@@ -35,7 +42,7 @@ a:hover {
     color: #388E3C; 
 }
 
-.info-block {
+.info-block, .lang-info-block {
     background-color: #3f3f3f; 
     padding: 25px; 
     margin-bottom: 20px;
@@ -50,11 +57,11 @@ a:hover {
     main{
         max-width: 100%;
     }
-    .info-block-name{
+    .info-block-name, .lang-info-block-name{
         font-size: 1em;
     }
 
-    .info-block-inhalt{
+    .info-block-inhalt, .lang-info-block-inhalt{
         font-size: 0.8;
     }
 
@@ -68,25 +75,25 @@ a:hover {
     
 }
 
-.info-block:hover{
+.info-block:hover, .lang-info-block:hover{
     box-shadow: 0 0px 6px #4caf4f93; 
 
 }
 
-.info-block-name {
+.info-block-name, .lang-info-block-name {
     color: #4CAF50; 
     font-size: 1.2em; 
     margin-bottom: 10px;
     font-weight: bold; 
 }
 
-.info-block-inhalt {
+.info-block-inhalt, .lang-info-block-inhalt {
     display: block;
     list-style: none;
     padding-left: 20px;
 }
 
-.info-block-inhalt li::before {
+.info-block-inhalt li::before, .lang-info-block li::before {
     content: "\2022"; 
     color: #4CAF50; 
     display: inline-block;
@@ -354,9 +361,57 @@ a:hover {
     left: 0;
     width: 100%;
     height: 100%;
-    z-index: 999; /* Below the zoomed image and navigation */
+    z-index: 999; 
     opacity: 0;
     visibility: hidden;
     transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; /* Fade in, and delay visibility to hide quickly */
     
 }
+
+.lang-info-block{
+    display: none;
+}
+
+.lang-info-block.active {
+    display: block;
+}
+.langButtonBlock{
+    display: flex;
+}
+
+.lang-button-block{
+    display: flex;
+    gap: 20px;
+    align-items:end;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.lang-button.active {
+    transform: scale(1.3); 
+    box-shadow: 0 0 15px rgb(76, 175, 79);
+    border: 2px;
+}    
+
+.lang-button{
+    width: 30px;
+    height: 15px;
+    padding: 0px 0px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    opacity: 0.7;
+}
+
+.lang-img{
+    position: relative;
+    width: inherit;
+    margin: -1px;
+}
+
+.lang-button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px  #4caf4fea;
+}
+

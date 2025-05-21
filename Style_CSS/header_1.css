@@ -8,13 +8,15 @@ header {
     box-shadow: 0 10px 10px #3f3f3f;
     position: fixed;
     left: 0;
-    right: 0;
     top: 0;
+    width: 100%;
     z-index: 4;
 }
 
 .articleImg {
-    width: 200px; 
+    width: 200px;
+    margin-top: -10px;
+    margin-bottom: -20px; 
 }
 
 .head-center {
