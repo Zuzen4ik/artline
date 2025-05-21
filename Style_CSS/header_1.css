@@ -9,8 +9,10 @@ header {
     position: fixed;
     left: 0;
     top: 0;
-    width: 100%;
+    right: 0;
     z-index: 4;
+    flex-grow: 1; 
+
 }
 
 .articleImg {
@@ -24,7 +26,6 @@ header {
     flex-direction: column;
     align-items: center; 
     gap: 10px; 
-    flex-grow: 1; 
     margin-left: 20px; 
 }
 
@@ -75,7 +76,7 @@ header {
     }
 
     .headerButon {
-        width: 120px;
+        width: 100;
         height: 25px;
         padding: 4px 8px;
         padding-bottom: 1px;
