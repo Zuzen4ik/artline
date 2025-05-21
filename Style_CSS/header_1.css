@@ -71,6 +71,7 @@ header {
 
     .headerButtonBlock {
         gap: 2px;
+        padding: 2px 40px;
     }
 
     .headerButon {
