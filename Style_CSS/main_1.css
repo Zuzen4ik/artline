@@ -147,7 +147,169 @@ a:hover {
     scroll-margin-top: 50vh;
 }
 
+.secundary-text {
+    display: flex;
+    color: #4CAF50; 
+    justify-content: center;
+    font-weight: bold; 
+}
+
+.photo-block{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 30px;
+    justify-content: center;
+    background-color: #3f3f3f; 
+    padding: 40px; 
+    margin-bottom: 20px;
+    border-radius: 6px; 
+    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); 
+    border-left: 5px solid #4CAF50; 
+    transition: box-shadow 0.25s ease-in-out;
+    opacity: 0.9;
+}
+
+.photo-block:hover{
+    box-shadow: 0 0px 6px #4caf4f93; 
+
+}
+
+.photoImg{
+    width: 240px;
+    height: 240px;
+    cursor: pointer;
+    transition: transform 0.3s ease-in-out;
+    object-fit: cover; 
+}
+
+.photoImg:hover {
+    transform: scale(1.03); 
+}
+
+.photoImg.zoomed {
+    position: fixed;
+    top: 53%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(3.5);
+    max-width: 95%; 
+    max-height: 90%; 
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+    background-color: white;
+    padding: 10px;
+    object-fit: contain; 
+    image-rendering: optimizeQuality;
+    z-index: 1001;
+}
+
+.zoom-navigation {
+    position: fixed;
+    display: flex;
+    justify-content: space-between;
+    top: 50%;
+    left: 0;
+    right: 0;
+    min-width: auto;
+    transform: translateY(-50%);
+    padding: 0 10px;
+    z-index: 1000;
+}
+
+.zoom-navigation button {
+    font-size: 1.5em;
+    padding: 60px 30px;
+    margin: 0 10px;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0.5);
+    color: white;
+    border: none;
+    border-radius: 5px;
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.3s ease-in-out;
+}
+
+.zoom-navigation button.disabled-button {
+    color: #4a4a4a;
+}
+
+.zoom-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 999; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; /* Fade in, and delay visibility to hide quickly */
+}
+
+.lang-info-block{
+    display: none;
+}
+
+.lang-info-block.active {
+    display: block;
+}
+.langButtonBlock{
+    display: flex;
+}
+
+.lang-button-block{
+    display: flex;
+    gap: 20px;
+    align-items:end;
+    padding: 20px 50px;
+    margin-bottom: 20px;
+    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+}
+.lang-button.active {
+    transform: scale(1.3); 
+    box-shadow: 0 0 15px rgb(76, 175, 79);
+    border: 2px;
+}    
+
+.lang-button{
+    width: 30px;
+    height: 15px;
+    padding: 0px 0px;
+    border: none;
+    cursor: pointer;
+    transition: transform 0.2s ease-in-out;
+    box-shadow: 0 0 10px rgb(0, 0, 0);
+    opacity: 0.7;
+}
+
+.lang-img{
+    position: relative;
+    width: inherit;
+    margin: -1px;
+}
+
+.lang-button:hover{
+    transform: scale(1.1);
+    box-shadow: 0 0 10px  #4caf4fea;
+}
+
 @media (max-width: 600px) {
+    .zoom-navigation button {
+        display: none;
+    }
+
+    .photoImg.zoomed {
+        padding: 2px;
+        transform: translate(-50%, -50%) scale(3.5);
+    }
+
+    .photo-block{
+        gap: 7px;
+        padding: 20px;
+    }
+
+    .photoImg{
+        width: 120px;
+        height: 120px;
+    }
+
     main{
         max-width: 100%;
     }
@@ -251,168 +413,3 @@ a:hover {
         width: 100%;
     }
 }
-
-.secundary-text {
-    display: flex;
-    color: #4CAF50; 
-    justify-content: center;
-    font-weight: bold; 
-}
-
-.photo-block{
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    justify-content: center;
-    background-color: #3f3f3f; 
-    padding: 40px; 
-    margin-bottom: 20px;
-    border-radius: 6px; 
-    box-shadow: 0 0px 6px rgba(0, 0, 0, 0.05); 
-    border-left: 5px solid #4CAF50; 
-    transition: box-shadow 0.25s ease-in-out;
-    opacity: 0.9;
-}
-
-.photo-block:hover{
-    box-shadow: 0 0px 6px #4caf4f93; 
-
-}
-
-.photoImg{
-    width: 240px;
-    height: 240px;
-    cursor: pointer;
-    transition: transform 0.3s ease-in-out;
-    object-fit: cover; 
-}
-
-.photoImg:hover {
-    transform: scale(1.03); 
-}
-
-@media (max-width: 600px) {
-    .zoom-navigation button {
-        display: none;
-    }
-
-    .photoImg.zoomed {
-        transform: translate(-50%, -50%) scale(2.3);
-    }
-
-    .photo-block{
-        gap: 7px;
-        padding: 20px;
-    }
-
-    .photoImg{
-        width: 120px;
-        height: 120px;
-    }
-}
-
-.photoImg.zoomed {
-    position: fixed;
-    top: 53%;
-    left: 50%;
-    transform: translate(-50%, -50%) scale(3.5);
-    max-width: 95%; 
-    max-height: 90%; 
-    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
-    background-color: white;
-    padding: 10px;
-    object-fit: contain; 
-    image-rendering: optimizeQuality;
-    z-index: 1000;
-}
-
-.zoom-navigation {
-    position: fixed;
-    display: flex;
-    justify-content: space-between;
-    top: 50%;
-    left: 0;
-    right: 0;
-    min-width: auto;
-    transform: translateY(-50%);
-    padding: 0 10px;
-    z-index: 1001;
-}
-
-.zoom-navigation button {
-    font-size: 1.5em;
-    padding: 60px 30px;
-    margin: 0 10px;
-    cursor: pointer;
-    background-color: rgba(0, 0, 0, 0.5);
-    color: white;
-    border: none;
-    border-radius: 5px;
-    opacity: 0; /* Initially hidden */
-    transition: opacity 0.3s ease-in-out;
-}
-
-.zoom-navigation button.disabled-button {
-    color: #4a4a4a;
-}
-
-.zoom-overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999; 
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.3s ease-in-out, visibility 0s 0.3s; /* Fade in, and delay visibility to hide quickly */
-    
-}
-
-.lang-info-block{
-    display: none;
-}
-
-.lang-info-block.active {
-    display: block;
-}
-.langButtonBlock{
-    display: flex;
-}
-
-.lang-button-block{
-    display: flex;
-    gap: 20px;
-    align-items:end;
-    padding: 20px 50px;
-    margin-bottom: 20px;
-    transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
-}
-.lang-button.active {
-    transform: scale(1.3); 
-    box-shadow: 0 0 15px rgb(76, 175, 79);
-    border: 2px;
-}    
-
-.lang-button{
-    width: 30px;
-    height: 15px;
-    padding: 0px 0px;
-    border: none;
-    cursor: pointer;
-    transition: transform 0.2s ease-in-out;
-    box-shadow: 0 0 10px rgb(0, 0, 0);
-    opacity: 0.7;
-}
-
-.lang-img{
-    position: relative;
-    width: inherit;
-    margin: -1px;
-}
-
-.lang-button:hover{
-    transform: scale(1.1);
-    box-shadow: 0 0 10px  #4caf4fea;
-}
-
