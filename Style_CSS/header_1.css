@@ -51,17 +51,17 @@ header {
 }
 
 .headerButon:hover {
-    background-color: #4CAF50; 
+    background-color: #5a8325; 
     color: #fff;
-    border-color: #4CAF50;
+    border-color: #7da71b;
     border-radius: 24px;
-    box-shadow: 0 0px 12px #4CAF50; 
+    box-shadow: 0 0px 12px #7da71b; 
 }
 
 .headerButon:active {
-    background-color: #388E3C; 
+    background-color: #7da71b; 
     color: #fff;
-    border-color: #388E3C;
+    border-color: #7da71b;
 }
 
 /* Media query for smaller screens (e.g., phones) */
