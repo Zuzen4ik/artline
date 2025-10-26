@@ -201,6 +201,30 @@ a:hover {
     z-index: 1001;
 }
 
+/* Spinner and image load transitions */
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.photo-loading .spinner {
+    width: 36px;
+    height: 36px;
+    border: 4px solid rgba(255,255,255,0.35);
+    border-top-color: #7da71b; /* matching theme green */
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+}
+
+.photoImg {
+    opacity: 0;
+    transition: opacity 0.35s ease, transform 0.3s ease-in-out;
+}
+
+.photoImg.loaded {
+    opacity: 1;
+}
+
 .zoom-navigation {
     position: fixed;
     display: flex;
