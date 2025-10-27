@@ -7,16 +7,6 @@
     <link rel="stylesheet" href="Style_CSS/header_1.css">
     <link rel="stylesheet" href="Style_CSS/footer.css">
     <title>Art Line</title>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-HD7Z79RN6J"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-HD7Z79RN6J');
-    </script>
 </head>
 <body>
     <header>
@@ -35,16 +25,15 @@
         </div>
     </header>
     <main>
-        <div class="photo-block" id="photoBlock">
-        </div>
+        <div class="photo-block" id="photoBlock"></div>
 
         <!-- Loading spinner and error message -->
         <div id="photo-loading" class="photo-loading" aria-hidden="true" style="display:none; text-align:center; padding:1rem;">
             <div class="spinner" aria-hidden="true" style="display:inline-block; width:36px; height:36px; border:4px solid #ccc; border-top-color:#333; border-radius:50%; animation:spin 1s linear infinite;"></div>
-            <div style="margin-top:.5rem;">Bilder werden geladen…</div>
+            <div style="margin-top:.5rem;">Bilder werden geladen&hellip;</div>
         </div>
         <div id="photo-error" class="photo-error" aria-live="polite" style="display:none; text-align:center; color:#c00; padding:1rem;">
-            Fehler beim Laden der Galerie. Bitte Seite neu laden oder später versuchen.
+            Fehler beim Laden der Galerie. Bitte Seite neu laden oder sp&auml;ter versuchen.
         </div>
 
         <div class="zoom-overlay"></div>
@@ -54,9 +43,9 @@
         </div>
     </main>
     <footer>
-        &copy; 2025 Artline Renovierung  Inhaber: Artem Iemets  An der Alb 2/1, 76332 Bad Herrenalb
-            Tel. +49 162 9360142 | info@artlinerenovierung.de  Mitglied der Handwerkskammer Karlsruhe – Betriebsnummer 107615  
-            Kleinunternehmer gemäß §19 UStG
+        &copy; 2025 Artline Renovierung &nbsp; Inhaber: Artem Iemets &nbsp; An der Alb 2/1, 76332 Bad Herrenalb
+            Tel. +49 162 9360142 | info@artlinerenovierung.de &nbsp; Mitglied der Handwerkskammer Karlsruhe &ndash; Betriebsnummer 107615  
+            Kleinunternehmer gem&auml;&szlig; &sect; 19 UStG
     </footer>
 
     <script>
@@ -68,7 +57,7 @@
             const zoomNavigation = document.querySelector('.zoom-navigation');
             let photoImages = [];
             let currentlyZoomedIndex = -1;
-            // Variables for swipe functionality
+            // swipe
             let touchStartX = 0;
             let touchEndX = 0;
             const minSwipeDistance = 50;
@@ -80,7 +69,6 @@
                 loadingEl.setAttribute('aria-hidden', 'false');
                 errorEl.style.display = 'none';
 
-                // Load image list from a manifest to avoid hard-coded filenames and broken links.
                 fetch('photos/list.json')
                     .then(response => {
                         if (!response.ok) throw new Error('Network response was not ok');
@@ -96,7 +84,6 @@
                             img.alt = 'Projekt photos';
                             img.classList.add('photoImg');
                             img.loading = 'lazy';
-                            // Fade-in when the image finishes loading
                             img.onload = function() { this.classList.add('loaded'); };
                             photoBlock.appendChild(img);
                         });
@@ -107,9 +94,9 @@
                     })
                     .catch(err => {
                         console.error('Failed to load photos/list.json:', err);
-                        const errorEl = document.getElementById('photo-error');
-                        errorEl.textContent = 'Fehler beim Laden der Galerie. Bitte Seite neu laden oder später versuchen.';
-                        errorEl.style.display = 'block';
+                        const errorEl2 = document.getElementById('photo-error');
+                        errorEl2.textContent = 'Fehler beim Laden der Galerie. Bitte Seite neu laden oder später versuchen.';
+                        errorEl2.style.display = 'block';
                     })
                     .finally(() => {
                         loadingEl.style.display = 'none';
@@ -119,7 +106,8 @@
 
             function updateNavigationButtons() {
                 if (prevButton && nextButton) {
-                    if (currentlyZoomedIndex <= 0) {
+                    const noSelection = (currentlyZoomedIndex === -1);
+                    if (noSelection || currentlyZoomedIndex <= 0) {
                         prevButton.disabled = true;
                         prevButton.classList.add('disabled-button');
                     } else {
@@ -127,7 +115,7 @@
                         prevButton.classList.remove('disabled-button');
                     }
 
-                    if (currentlyZoomedIndex >= photoImages.length - 1) {
+                    if (noSelection || currentlyZoomedIndex >= photoImages.length - 1) {
                         nextButton.disabled = true;
                         nextButton.classList.add('disabled-button');
                     } else {
@@ -135,9 +123,9 @@
                         nextButton.classList.remove('disabled-button');
                     }
 
-                    zoomNavigation.style.visibility = currentlyZoomedIndex !== -1 ? 'visible' : 'hidden';
-                    prevButton.style.opacity = currentlyZoomedIndex !== -1 ? '1' : '0';
-                    nextButton.style.opacity = currentlyZoomedIndex !== -1 ? '1' : '0';
+                    zoomNavigation.style.visibility = !noSelection ? 'visible' : 'hidden';
+                    prevButton.style.opacity = !noSelection ? '1' : '0';
+                    nextButton.style.opacity = !noSelection ? '1' : '0';
                 }
             }
 
@@ -177,6 +165,38 @@
                     });
                 });
 
+                if (prevButton) {
+                    prevButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (currentlyZoomedIndex === -1) {
+                            if (photoImages.length > 0) {
+                                currentlyZoomedIndex = 0;
+                                photoImages[currentlyZoomedIndex].classList.add('zoomed');
+                            }
+                        } else {
+                            showPrevPhoto();
+                        }
+                        updateNavigationButtons();
+                        updateOverlayVisibility();
+                    });
+                }
+
+                if (nextButton) {
+                    nextButton.addEventListener('click', function(e) {
+                        e.preventDefault();
+                        if (currentlyZoomedIndex === -1) {
+                            if (photoImages.length > 0) {
+                                currentlyZoomedIndex = 0;
+                                photoImages[currentlyZoomedIndex].classList.add('zoomed');
+                            }
+                        } else {
+                            showNextPhoto();
+                        }
+                        updateNavigationButtons();
+                        updateOverlayVisibility();
+                    });
+                }
+
                 document.addEventListener('click', function(event) {
                     if (currentlyZoomedIndex !== -1 && !event.target.classList.contains('photoImg') && !event.target.closest('.zoom-navigation')) {
                         photoImages[currentlyZoomedIndex].classList.remove('zoomed');
@@ -201,37 +221,16 @@
                     }
                 });
 
-                if (prevButton && nextButton) {
-                    prevButton.addEventListener('click', showPrevPhoto);
-                    nextButton.addEventListener('click', showNextPhoto);
-                        
-                }
-
-                // Add Touch Event Listeners for swipe
-                zoomOverlay.addEventListener('touchstart', function(event) {
-                    if (currentlyZoomedIndex !== -1) {
-                        touchStartX = event.touches[0].clientX;
-                    }
+                // swipe support
+                document.addEventListener('touchstart', function(e) {
+                    touchStartX = e.changedTouches[0].screenX;
                 });
-
-                zoomOverlay.addEventListener('touchmove', function(event) {
-                    if (currentlyZoomedIndex !== -1) {
-                        touchEndX = event.touches[0].clientX;
-                    }
-                });
-
-                zoomOverlay.addEventListener('touchend', function() {
-                    if (currentlyZoomedIndex !== -1) {
-                        const swipeDistance = touchEndX - touchStartX;
-
-                        if (swipeDistance > minSwipeDistance) { // Swipe right
-                            showPrevPhoto();
-                        } else if (swipeDistance < -minSwipeDistance) { // Swipe left
-                            showNextPhoto();
-                        }
-                        // Reset touch positions
-                        touchStartX = 0;
-                        touchEndX = 0;
+                document.addEventListener('touchend', function(e) {
+                    touchEndX = e.changedTouches[0].screenX;
+                    const delta = touchEndX - touchStartX;
+                    if (currentlyZoomedIndex !== -1 && Math.abs(delta) > minSwipeDistance) {
+                        if (delta < 0) { showNextPhoto(); }
+                        if (delta > 0) { showPrevPhoto(); }
                     }
                 });
             }
